@@ -1,0 +1,15 @@
+FROM node:argon
+
+RUN mkdir -p /usr/src/app
+RUN mkdir -p /var/app/logs
+WORKDIR /usr/src/app
+COPY ../package.json /usr/src/app/
+RUN npm install
+COPY .. /usr/src/app
+COPY ../bin/www_docker.js /usr/src/app/bin/www_https.js
+COPY app_docker.js /usr/src/app/app.js
+COPY ../certs/* /var/app/
+
+ENTRYPOINT ["npm", "start"]
+
+EXPOSE 3000
