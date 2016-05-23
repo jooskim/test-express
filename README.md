@@ -3,6 +3,10 @@
 ## Purpose of this repo
 - to serve as a personal cheatsheet for setting up a boilerplate that uses ExpressJs as application server, Strongloop as process manager and Nginx as cache & reverse proxy server
 
+## Preprequisites
+- Strongloop
+- Nginx
+
 ## Plugins
 - compression
 - helmet
