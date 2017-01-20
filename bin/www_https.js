@@ -3,13 +3,15 @@ var app = require('../app');
 var fs = require('fs');
 var debug = require('debug')('test-express:server');
 var https = require('https');
-var port = process.env.PORT || '3000';
+var port = process.env.PORT || '3443';
+
+const wd = process.cwd();
 
 app.set('port', port);
 app.set('trust proxy', 1);
 var server = https.createServer({
-    key: fs.readFileSync('/home/jooskim/Documents/test-express/certs/key.pem'),
-    cert: fs.readFileSync('/home/jooskim/Documents/test-express/certs/cert.pem')
+    key: fs.readFileSync(wd + '/certs/key.pem'),
+    cert: fs.readFileSync(wd + '/certs/cert.pem')
 }, app);
 
 server.listen(app.get('port'));
